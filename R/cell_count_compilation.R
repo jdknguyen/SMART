@@ -19,7 +19,7 @@
 #' @md
 #' @export
 
-cell_count_compliation <- function(regions = c("grey"), subregions = 5, clean_zeros = FALSE, hierarchy_level = FALSE, datasets = c(), files_list = c(), brains_list = c(), output = NULL){
+cell_count_compilation <- function(regions = c("grey"), subregions = 5, clean_zeros = FALSE, hierarchy_level = FALSE, datasets = c(), files_list = c(), brains_list = c(), output = NULL){
 
   # create region list and create global region table
 
