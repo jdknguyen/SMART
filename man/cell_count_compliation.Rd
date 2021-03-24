@@ -2,7 +2,7 @@
 % Please edit documentation in R/cell_count_compilation.R
 \name{cell_count_compliation}
 \alias{cell_count_compliation}
-\title{Compile cell counts from multiple brains \strong{(W)}.}
+\title{Compile cell counts from multiple brains.}
 \usage{
 cell_count_compliation(
   regions = c("grey"),

@@ -59,6 +59,8 @@ brain.
 \item \code{\link[=seg_loop]{seg_loop()}} Loop through and segment images in the segmentation channel.
 \item \code{\link[=clean_duplicates]{clean_duplicates()}} \strong{(W)} Duplicate cell count clean up of segmentation
 output
+\item \code{\link[=cell_counter]{cell_counter()}} Determines total number of cells segmented, retained,
+and removed by duplicate cleanup.
 \item \code{\link[=forward_warp]{forward_warp()}} Perform forward warp loop back onto atlas space using
 segmentation and registration data.
 }
@@ -67,6 +69,8 @@ segmentation and registration data.
 \section{Part 5. Dataset manipulation and plotting}{
 
 \enumerate{
+\item \code{\link[=isolated_dataset]{isolated_dataset()}} Isolates a user-specified subset of the forward warped
+dataset.
 \item \code{\link[=get_rois]{get_rois()}} Get subset of the forward warped dataframe of just regions of
 interest.
 \item \code{\link[=get_sunburst]{get_sunburst()}} Generate a sunburst plot using a forward warped dataset.
@@ -76,6 +80,8 @@ removing glassbrain in the background.
 \item \code{\link[=get_table]{get_table()}} Generates a dataframe showing region acronyms, their full
 name, hierachical paths, total cell counts, left and right counts, and cell
 count percentages.
+\item \code{\link[=cell_count_compilation]{cell_count_compilation()}} Compiles cell counts from multiple brains.
+\item \code{\link[=get_groups]{get_groups()}} Compiles group data from individual brains.
 }
 }
 

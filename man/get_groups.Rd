@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_groups.R
 \name{get_groups}
 \alias{get_groups}
-\title{Compile group data from individual brains \strong{(W)}.}
+\title{Compile group data from individual brains.}
 \usage{
 get_groups(
   input = NULL,

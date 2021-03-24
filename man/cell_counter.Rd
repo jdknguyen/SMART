@@ -2,7 +2,7 @@
 % Please edit documentation in R/cell_counter.R
 \name{cell_counter}
 \alias{cell_counter}
-\title{Plate-by-plate cell counter for \emph{segs} object \strong{(W)}.}
+\title{Plate-by-plate cell counter for \emph{segs} object.}
 \usage{
 cell_counter(segs = segs)
 }
