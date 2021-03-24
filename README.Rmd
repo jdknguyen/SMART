@@ -61,7 +61,7 @@ the pipeline.*
 ```{r}
 run_path = function(base_path, ...) {
   path = file.path(
-    "C:/Users/mjin1/Documents/GitHub/SMART/",
+    "C:/Users/nguyenjd/Desktop/JDN Files/SMARTTesting/SMART",
     base_path)
   if (!file.exists(path)) {
     path = file.path("docs", base_path)
@@ -100,7 +100,7 @@ SMART is easily installed from github using the devtools package:
 library(devtools) 
  
 # Install SMART
-devtools::install_github("mjin1812/SMART")
+devtools::install_github("jdknguyen/SMART")
 
 # Load SMART
 library(SMART)
@@ -139,14 +139,18 @@ For processing a wholebrain dataset, the pipeline is split into 5 sections. Thes
 + [`filter_loop()`](#id9) Loops through reference slices and allows user to check/change filter settings for segmentation or registration.
 + [`seg_loop()`](#id10)   Loop through and segments images in the segmentation channel.
 + [`clean_duplicates()`](#id11) **(W)** Duplicate cell count clean up of segmentation output.
-+ [`forward_warp()`](#id12) Performs forward warp loop back onto atlas space using segmentation and registration output.
++ [`cell_counter()`](#id12) Determines total number of cells segmented, retained, and removed by duplicate cleanup.
++ [`forward_warp()`](#id13) Performs forward warp loop back onto atlas space using segmentation and registration output.
 
 **Part 5. Dataset manipulation and plotting**
 
-+ [`get_rois()`](#id13) Gets a subset of the forward warped dataframe of just regions of interest.
-+ [`get_sunburst()`](#id14) Generates a sunburst plot using a forward warped dataset.
-+ [`get_tree()`](#id15) Creates a dataframe of hierarchical region cell count data.
-+ [`glassbrain2()`](#id16) Generates a 3D plot of cells counts with option of removing glassbrain in the background.
++ [`isolated_dataset()`](#id14) Isolates a user-specified subset of the forward warped dataset.
++ [`get_rois()`](#id15) Gets a subset of the forward warped dataframe of just regions of interest.
++ [`get_sunburst()`](#id16) Generates a sunburst plot using a forward warped dataset.
++ [`get_tree()`](#id17) Creates a dataframe of hierarchical region cell count data.
++ [`glassbrain2()`](#id18) Generates a 3D plot of cells counts with option of removing glassbrain in the background.
++ [`cell_count_compilation()`](#id19) Compiles cell counts from multiple brains.
++ [`get_groups()`](#id20) Compiles group data from individual brains.
 
 Below is a walkthrough of each of these functions and the pipeline as a whole
 using an example whole brain dataset. Feel free to use the function links above
@@ -221,19 +225,19 @@ The console code below shows the setup list I am using:
 
 > setup <- setup_pl(setup)
 $`anim_ID`
-[1] "1602"
+[1] "1T_T10"
 
 $user_init
-[1] "MJ"
+[1] "JDN"
 
 $regi_channel
-[1] "D:/SMART_pilot_data/R15_1602_SG_Rein_NoTest_coronal_C02"
+[1] "D:/Transformed-JDN/1T_T10/1T_T10_C02"
 
 $seg_channel
-[1] "D:/SMART_pilot_data/R15_1602_SG_Rein_NoTest_coronal_C01"
+[1] "D:/Transformed-JDN/1T_T10/1T_T10_C01"
 
 $output
-[1] "D:/SMART_pilot_data/output"
+[1] "D:/Transformed-JDN/1T_T10/output"
 
 $z_space
 [1] 0.0025
@@ -328,28 +332,28 @@ Below shows my console output for my savepaths variable:
 > savepaths <- get_savepaths(setup)
 > savepaths
 $`envir_savepath`
-[1] "D:/SMART_pilot_data/output/R_data/Animal_1602_2019-01-07_MJ.RData"
+[1] "D:/Transformed-JDN/1T_T10/output/Animal_1T_T10_2021-03-10_JDN.RData"
 
 $out_reference_aligned
-[1] "D:/SMART_pilot_data/output/Reference_aligned"
+[1] "D:/Transformed-JDN/1T_T10/output/Reference_aligned"
 
 $out_RC_brain_morph
-[1] "D:/SMART_pilot_data/output/RC_brain_morph"
+[1] "D:/Transformed-JDN/1T_T10/output/RC_brain_morph"
 
 $out_auto_registration
-[1] "D:/SMART_pilot_data/output/Registrations_auto"
+[1] "D:/Transformed-JDN/1T_T10/output/Registrations_auto"
 
 $out_registration
-[1] "D:/SMART_pilot_data/output/Registrations_manual"
+[1] "D:/Transformed-JDN/1T_T10/output/Registrations_manual"
 
 $out_registration_warps
-[1] "D:/SMART_pilot_data/output/Registration_warps"
+[1] "D:/Transformed-JDN/1T_T10/output/Registration_warps"
 
 $out_segmentation_warps
-[1] "D:/SMART_pilot_data/output/Segmentation_warpimages"
+[1] "D:/Transformed-JDN/1T_T10/output/Segmentation_warpimages"
 
 $out_segmentation_schem
-[1] "D:/SMART_pilot_data/output/Segmentation_schematics"
+[1] "D:/Transformed-JDN/1T_T10/output/Segmentation_schematics"
 
 >
 ```
@@ -417,7 +421,7 @@ plates (represented above by solid vertical lines).
 ```{r, out.with="60%"}
 run_path("schematics/choice_game_1.PNG")
 ```
-<!-- ![**Display and prompt**](C:/Users/mjin1/Documents/GitHub/SMART/schematics/){width=60%} -->
+<!-- ![**Display and prompt**](C:/Users/nguyenjd/Desktop/JDN Files/SMARTTesting/SMART/docs/schematics){width=60%} -->
 
 </center>
 
@@ -445,7 +449,7 @@ choice option.
 run_path("schematics/midpoint_schem.PNG")
 ```
 
-<!-- ![**Midpoint quality check**](C:/Users/mjin1/Documents/GitHub/SMART/schematics/midpoint_schem.PNG){width=30%} -->
+<!-- ![**Midpoint quality check**](C:/Users/nguyenjd/Desktop/JDN Files/SMARTTesting/SMART/docs/schematics/midpoint_schem.PNG){width=30%} -->
 
 </center>
 
@@ -462,7 +466,7 @@ run_path("schematics/choice_game_2.PNG")
 ```
 
 
-<!-- ![**Midpoint quality check display**](C:/Users/mjin1/Documents/GitHub/SMART/schematics/choice_game_2.PNG){width=35%} -->
+<!-- ![**Midpoint quality check display**](C:/Users/nguyenjd/Desktop/JDN Files/SMARTTesting/SMART/docs/schematics/choice_game_2.PNG){width=35%} -->
 
 </center>
 
@@ -499,7 +503,7 @@ brainmorph(setup, savepaths, saveplot = FALSE)
 ```{r, out.with="40%"}
 run_path("schematics/brainmorph.PNG")
 ```
-<!-- ![**Brainmorph plot**](C:/Users/mjin1/Documents/GitHub/SMART/schematics/brainmorph.PNG){width=40%} -->
+<!-- ![**Brainmorph plot**](C:/Users/nguyenjd/Desktop/JDN Files/SMARTTesting/SMART/docs/schematics/brainmorph.PNG){width=40%} -->
 
 </center> 
 
@@ -556,7 +560,7 @@ analysis pipelines. Check out the function help page for more details.
 ```{r, out.with="70%"}
 run_path("schematics/registration_console.PNG")
 ```
-<!-- ![**Registration interface**](C:/Users/mjin1/Documents/GitHub/SMART/schematics/registration_console.PNG){width=70%} -->
+<!-- ![**Registration interface**](C:/Users/nguyenjd/Desktop/JDN Files/SMARTTesting/SMART/docs/schematics/registration_console.PNG){width=70%} -->
 
 </center>
 The schematic above illustrates the user-friendly console interface that allows
@@ -643,9 +647,9 @@ run_path("schematics/before_registration.PNG")
 run_path("schematics/after_registration.PNG")
 ```
 
-<!-- ![**After auto-registration**](C:/Users/mjin1/Documents/GitHub/SMART/schematics/before_registration.PNG){width=50%} -->
+<!-- ![**After auto-registration**](C:/Users/nguyenjd/Desktop/JDN Files/SMARTTesting/SMART/docs/schematics/before_registration.PNG){width=50%} -->
 
-<!-- ![**After registration correction**](C:/Users/mjin1/Documents/GitHub/SMART/schematics/after_registration.PNG){width=50%} -->
+<!-- ![**After registration correction**](C:/Users/nguyenjd/Desktop/JDN Files/SMARTTesting/SMART/docs/schematics/after_registration.PNG){width=50%} -->
 
 </center>
 
@@ -725,7 +729,7 @@ Below are representative forward warp and schematic images:
 ```{r, out.with="75%"}
 run_path("schematics/forwardwarp.PNG")
 ```
-  <!-- ![](C:/Users/mjin1/Documents/GitHub/SMART/schematics/forwardwarp.PNG){width=75%} -->
+  <!-- ![](C:/Users/nguyenjd/Desktop/JDN Files/SMARTTesting/SMART/docs/schematics/forwardwarp.PNG){width=75%} -->
 
 **Schematic plot**
   
@@ -733,7 +737,7 @@ run_path("schematics/forwardwarp.PNG")
 run_path("schematics/schematic.PNG")
 ```
 
-  <!-- ![](C:/Users/mjin1/Documents/GitHub/SMART/schematics/schematic.PNG){width=40%} -->
+  <!-- ![](C:/Users/nguyenjd/Desktop/JDN Files/SMARTTesting/SMART/docs/schematics/schematic.PNG){width=40%} -->
 
 </center>
   
@@ -767,7 +771,7 @@ wholebrain::dot.plot(rois)
 run_path("schematics/dotplot.PNG")
 ```
 
-<!-- ![**Region plot**](C:/Users/mjin1/Documents/GitHub/SMART/schematics/dotplot.PNG){width=70%} -->
+<!-- ![**Region plot**](C:/Users/nguyenjd/Desktop/JDN Files/SMARTTesting/SMART/docs/schematics/dotplot.PNG){width=70%} -->
 
 </center>
 
@@ -780,7 +784,7 @@ SMART::get_sunburst(dataset)
 ```
 
 ```{r, echo = FALSE, cache = FALSE}
-fname = "C:/Users/mjin1/Documents/Test/packagetest_W/R_data/dataset.RData"
+fname = "CC:/Users/nguyenjd/Desktop/JDN Files/SMARTTesting/SMART/docs/schematics/dataset.RData"
 if (file.exists(fname)) {
   load(fname)
   SMART::get_sunburst(dataset)
