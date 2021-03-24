@@ -1,4 +1,4 @@
-#' @title Plate-by-plate cell counter for *segs* object **(W)**.
+#' @title Plate-by-plate cell counter for *segs* object.
 #' @description Loop through all segmented cells to determine how
 #' many cells were segmented, removed by [clean_duplicates()], and
 #' retained after duplicate cleanup. Prints output in console.

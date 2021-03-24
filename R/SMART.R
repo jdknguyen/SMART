@@ -44,11 +44,15 @@
 #' 2) [seg_loop()] Loop through and segment images in the segmentation channel.
 #' 3) [clean_duplicates()] **(W)** Duplicate cell count clean up of segmentation
 #' output
-#' 4) [forward_warp()] Perform forward warp loop back onto atlas space using
+#' 4) [cell_counter()] Determines total number of cells segmented, retained,
+#' and removed by duplicate cleanup.
+#' 5) [forward_warp()] Perform forward warp loop back onto atlas space using
 #' segmentation and registration data.
 #'
 #' @section Part 5. Dataset manipulation and plotting:
 #'
+#' 1) [isolated_dataset()] Isolates a user-specified subset of the forward warped
+#' dataset.
 #' 1) [get_rois()] Get subset of the forward warped dataframe of just regions of
 #' interest.
 #' 2) [get_sunburst()] Generate a sunburst plot using a forward warped dataset.
@@ -58,6 +62,8 @@
 #' 5) [get_table()] Generates a dataframe showing region acronyms, their full
 #' name, hierachical paths, total cell counts, left and right counts, and cell
 #' count percentages.
+#' 6) [cell_count_compilation()] Compiles cell counts from multiple brains.
+#' 7) [get_groups()] Compiles group data from individual brains.
 #' @md
 #' @docType package
 #' @name SMART

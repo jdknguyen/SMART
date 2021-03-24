@@ -1,4 +1,4 @@
-#' @title Compile group data from individual brains **(W)**.
+#' @title Compile group data from individual brains.
 #' @description Uses output of [cell_count_compilation()] to calculate
 #' the mean and standard deviation of every user-specified test group.
 #' @param input (required, default = NULL) Path to .csv file to be used,

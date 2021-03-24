@@ -1,4 +1,4 @@
-#' @title Compile cell counts from multiple brains **(W)**.
+#' @title Compile cell counts from multiple brains.
 #' @description  Loop through datasets across multiple .RData files,
 #' corresponding to different SMART analyses, and compile cell counts
 #' from each of them into a data table.
