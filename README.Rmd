@@ -123,7 +123,7 @@ For processing a wholebrain dataset, the pipeline is split into 5 sections. Thes
 + [`im_sort()`](#id2) A function to sort image paths for imaging datasets.
 + [`get_savepaths()`](#id3) Generate savepaths and save directories.
 
-**Part 2: Alignment (W) **
+**Part 2: Alignment (W)**
 
 + [`choice()`](#id4)  **(W)** User friendly choice game to align internal reference atlas plates.
 + [`brainmorph()`](#id5) **(W)** Generate a brain morph plot.
@@ -157,6 +157,8 @@ hierachical paths, total cell counts, left and right counts, and cell count perc
 + [`concatenate()`](#id20) Combines datasets from multiple brains.
 + [`cell_count_compilation()`](#id21) Compiles cell counts from multiple brains.
 + [`get_groups()`](#id22) Compiles group data from individual brains.
++ [`voxelize()`](#id23) Generate voxel-based heatmaps from multiple brains.
++ [`voxel_stats()`](#id24) Run statistical tests on voxel-based heatmaps.
 
 Below is a walkthrough of each of these functions and the pipeline as a whole
 using an example whole brain dataset. Feel free to use the function links above
@@ -177,7 +179,7 @@ savepaths and directories for the rest of the pipeline.
 
 **Step 1.** 
 
-**`setup_pl()()`** This function asks the user for setup information. Based on input from the user, the function returns a list of parameters for either a whole or partial brain analysis.
+**`setup_pl()`** This function asks the user for setup information. Based on input from the user, the function returns a list of parameters for either a whole or partial brain analysis.
 
 ```{r, eval = FALSE}
 
