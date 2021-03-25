@@ -149,8 +149,14 @@ For processing a wholebrain dataset, the pipeline is split into 5 sections. Thes
 + [`get_sunburst()`](#id16) Generates a sunburst plot using a forward warped dataset.
 + [`get_tree()`](#id17) Creates a dataframe of hierarchical region cell count data.
 + [`glassbrain2()`](#id18) Generates a 3D plot of cells counts with option of removing glassbrain in the background.
-+ [`cell_count_compilation()`](#id19) Compiles cell counts from multiple brains.
-+ [`get_groups()`](#id20) Compiles group data from individual brains.
++ [`get_table()`](#id19) Generates a dataframe showing region acronyms, their full name, 
+hierachical paths, total cell counts, left and right counts, and cell count percentages.
+
+**Part 6. Aggregating data from multiple analyses**
+
++ [`concatenate()`](#id20) Combines datasets from multiple brains.
++ [`cell_count_compilation()`](#id21) Compiles cell counts from multiple brains.
++ [`get_groups()`](#id22) Compiles group data from individual brains.
 
 Below is a walkthrough of each of these functions and the pipeline as a whole
 using an example whole brain dataset. Feel free to use the function links above
