@@ -35,80 +35,81 @@
 #' @export
 #' @md
 
-forward_warp <- function(setup, segs, regis,
-                            filetype = c("tif", "tiff", "wmf", "emf", "png", "jpg", "jpeg", "bmp","ps", "eps", "pdf"),
-                            savewarp = TRUE, saveschematic = TRUE,
-                            plane = "coronal", title = FALSE,
-                            mm.grid = TRUE, dev.size = c(5.4, 4.465),
-                            pch = 21, cex = 0.5, col = "black", scale.bar = FALSE, region.colors = TRUE){
+forward_warp <- function (setup, segs, regis, filetype = c("tif", "tiff",
+                                                           "wmf", "emf", "png", "jpg", "jpeg",
+                                                           "bmp", "ps", "eps", "pdf"), savewarp = TRUE,
+                          saveschematic = TRUE, plane = "coronal", title = FALSE,
+                          mm.grid = TRUE, dev.size = c(5.4, 4.465), pch = 21, cex = 0.5,
+                          col = "black", scale.bar = FALSE, region.colors = TRUE)
+{
   tictoc::tic()
-  # Match filetype argument
   filetype <- match.arg(filetype)
-
-  # Match the indices in the registration vector with the appropriate index
-  # of the registration vector
-  if (length(setup) > 9 ){
-    regi_ind <- vector(mode="numeric",length(segs$seg_z))
-    for (n in 1:length(segs$seg_z) ) {
-      regi_ind[n] <- which.min(abs(setup$regi_z-segs$seg_z[n]))
+  if (length(setup) > 9) {
+    regi_ind <- vector(mode = "numeric", length(segs$seg_z))
+    for (n in 1:length(segs$seg_z)) {
+      regi_ind[n] <- which.min(abs(setup$regi_z - segs$seg_z[n]))
     }
-  } else {
+  }
+  else {
     regi_ind <- 1:length(segs$seg_z)
   }
-
   if (length(setup$regi_z) > 1) {
-    # Interpolate all z images numbers to AP values
-    my_function <- approxfun(setup$regi_z, setup$regi_AP, method = "linear")
+    my_function <- approxfun(setup$regi_z, setup$regi_AP,
+                             method = "linear")
     z_matched_AP <- my_function(segs$seg_z)
-  } else {
+  }
+  else {
     z_matched_AP <- setup$regi_AP
   }
-
-  # Loop through every z-image and perform forward warp
   for (n in 1:length(segs$seg_z)) {
-    regi <- regis[[regi_ind[n]]]
-    seg  <- segs$segmentations[[n]]
-
-    # perform forward warp
-    data <- wholebrain::inspect.registration(regi, seg, soma = TRUE,
-                                             forward.warps = TRUE, batch.mode=TRUE)
-    if (savewarp) {
-      path <- paste0(setup$savepaths$out_segmentation_warps, "/forwardwarp_z_", toString(segs$seg_z[n]),
-                     "_AP_", toString(round(regi$coordinate, digits = 2)), "_plate_",
-                     platereturn(round(regi$coordinate, digits = 2)), ".", filetype)
-
-      savePlot(filename = path, type = filetype)
+    toggle <- TRUE
+    if(length(segs$segmentations[[n]]$soma$x) > 0){
+      for(j in 1:length(segs$segmentations[[n]]$soma$x)){
+        if(is.na(segs$segmentations[[n]]$soma$x[j]) == FALSE){
+          toggle <- FALSE
+        }
+      }
     }
-    dev.off()
-
-    # clean up null region ids and add animal number
-    data <- data[!data$id==0,]
-    data$animal <- setup$anim_ID
-
-    # Save schematic plot
-    if(saveschematic){
-      wholebrain::schematic.plot(dataset = data, plane = plane, save.plots = FALSE, title = title, mm.grid = mm.grid,
-                                 dev.size = dev.size, pch = pch, cex = cex, col = "black",
-                                 scale.bar = scale.bar, region.colors = region.colors )
-      path <- paste0(setup$savepaths$out_segmentation_schem, "/schematic_z_", toString(segs$seg_z[n]),
-                     "_AP_", toString(round(regi$coordinate, digits = 2)), "_plate_",
-                     platereturn(round(regi$coordinate, digits = 2)), ".", filetype)
-      savePlot(filename = path, type = filetype)
+    if(toggle == FALSE){
+      regi <- regis[[regi_ind[n]]]
+      seg <- segs$segmentations[[n]]
+      data <- wholebrain::inspect.registration(regi, seg, soma = TRUE,
+                                               forward.warps = TRUE, batch.mode = TRUE)
+      if (savewarp) {
+        path <- paste0(setup$savepaths$out_segmentation_warps,
+                       "/forwardwarp_z_", toString(segs$seg_z[n]),
+                       "_AP_", toString(round(regi$coordinate,
+                                              digits = 2)), "_plate_", platereturn(round(regi$coordinate,
+                                                                                         digits = 2)), ".", filetype)
+        savePlot(filename = path, type = filetype)
+      }
       dev.off()
-    }
-
-    # Set AP to interpolated value
-    data$AP<- z_matched_AP[n]
-
-    # Add to master dataset
-    if (n==1) {
-      dataset <- data
-    } else {
-      dataset <- rbind(dataset, data)
+      data <- data[!data$id == 0, ]
+      data$animal <- setup$anim_ID
+      if (saveschematic) {
+        wholebrain::schematic.plot(dataset = data, plane = plane,
+                                   save.plots = FALSE, title = title, mm.grid = mm.grid,
+                                   dev.size = dev.size, pch = pch, cex = cex, col = "black",
+                                   scale.bar = scale.bar, region.colors = region.colors)
+        path <- paste0(setup$savepaths$out_segmentation_schem,
+                       "/schematic_z_", toString(segs$seg_z[n]),
+                       "_AP_", toString(round(regi$coordinate,
+                                              digits = 2)), "_plate_", platereturn(round(regi$coordinate,
+                                                                                         digits = 2)), ".", filetype)
+        savePlot(filename = path, type = filetype)
+        dev.off()
+      }
+      data$AP <- z_matched_AP[n]
+      if (n == 1) {
+        dataset <- data
+      }
+      else {
+        dataset <- rbind(dataset, data)
+      }
     }
   }
-  # Return processing
   time <- tictoc::toc(quiet = TRUE)
-  cat("\n", toString(round((time$toc - time$tic)/60, digits = 2)), "min elapsed")
+  cat("\n", toString(round((time$toc - time$tic)/60,
+                           digits = 2)), "min elapsed")
   return(dataset)
 }

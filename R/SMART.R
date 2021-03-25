@@ -53,17 +53,22 @@
 #'
 #' 1) [isolated_dataset()] Isolates a user-specified subset of the forward warped
 #' dataset.
-#' 1) [get_rois()] Get subset of the forward warped dataframe of just regions of
+#' 2) [get_rois()] Get subset of the forward warped dataframe of just regions of
 #' interest.
-#' 2) [get_sunburst()] Generate a sunburst plot using a forward warped dataset.
-#' 3) [get_tree()] Create a dataframe of hierarchical region cell count data.
-#' 4) [glassbrain2()] Generate 3D plot of cells with option of plotting or
+#' 3) [get_sunburst()] Generate a sunburst plot using a forward warped dataset.
+#' 4) [get_tree()] Create a dataframe of hierarchical region cell count data.
+#' 5) [glassbrain2()] Generate 3D plot of cells with option of plotting or
 #' removing glassbrain in the background.
-#' 5) [get_table()] Generates a dataframe showing region acronyms, their full
+#' 6) [get_table()] Generates a dataframe showing region acronyms, their full
 #' name, hierachical paths, total cell counts, left and right counts, and cell
 #' count percentages.
-#' 6) [cell_count_compilation()] Compiles cell counts from multiple brains.
-#' 7) [get_groups()] Compiles group data from individual brains.
+#'
+#' @section Part 6. Aggregating data from multiple analyses:
+#'
+#' 1) [concatenate()] Combines datasets from multiple brains.
+#' 2) [cell_count_compilation()] Compiles cell counts from multiple brains.
+#' 3) [get_groups()] Compiles group data from individual brains.
+#'
 #' @md
 #' @docType package
 #' @name SMART
