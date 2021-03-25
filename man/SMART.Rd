@@ -80,6 +80,13 @@ removing glassbrain in the background.
 \item \code{\link[=get_table]{get_table()}} Generates a dataframe showing region acronyms, their full
 name, hierachical paths, total cell counts, left and right counts, and cell
 count percentages.
+}
+}
+
+\section{Part 6. Aggregating data from multiple analyses}{
+
+\enumerate{
+\item \code{\link[=concatenate]{concatenate()}} Combines datasets from multiple brains.
 \item \code{\link[=cell_count_compilation]{cell_count_compilation()}} Compiles cell counts from multiple brains.
 \item \code{\link[=get_groups]{get_groups()}} Compiles group data from individual brains.
 }
