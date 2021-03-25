@@ -89,6 +89,8 @@ count percentages.
 \item \code{\link[=concatenate]{concatenate()}} Combines datasets from multiple brains.
 \item \code{\link[=cell_count_compilation]{cell_count_compilation()}} Compiles cell counts from multiple brains.
 \item \code{\link[=get_groups]{get_groups()}} Compiles group data from individual brains.
+\item \code{\link[=voxelize]{voxelize()}} Generate voxel-based heatmaps from multiple brains.
+\item \code{\link[=voxel_stats]{voxel_stats()}} Run statistical tests on voxel-based heatmaps.
 }
 }
 
