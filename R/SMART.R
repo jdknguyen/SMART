@@ -68,6 +68,8 @@
 #' 1) [concatenate()] Combines datasets from multiple brains.
 #' 2) [cell_count_compilation()] Compiles cell counts from multiple brains.
 #' 3) [get_groups()] Compiles group data from individual brains.
+#' 4) [voxelize()] Generate voxel-based heatmaps from multiple brains.
+#' 5) [voxel_stats()] Run statistical tests on voxel-based heatmaps.
 #'
 #' @md
 #' @docType package

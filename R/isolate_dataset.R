@@ -17,8 +17,9 @@
 #' will be flipped across the midline.
 #' @param bounds (optional, default = c()) Vector to specify whether cells within
 #' a circular or rectangular area should be retained. For circles, the vector
-#' should be formatted as: c(ML-center, DV-center, radius). For rectangles, the
-#' vector should be formatted as: c(ML-top-left-corner, DV-top-left-corner, width, height).
+#' should be formatted as: c("circle", ML-center, DV-center, radius). For
+#' rectangles, the vector should be formatted as: c("rectangle",
+#' ML-top-left-corner, DV-top-left-corner, width, height).
 #' @param rois (optional, default = c("grey")) Vector to specify regions of interest
 #' to retain cells from.
 #' @return Returns *isolated_dataset* a variable storing all cells retained from
