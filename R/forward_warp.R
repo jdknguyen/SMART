@@ -20,18 +20,16 @@
 #'   options: "coronal", "sagittal"
 #' @param title (optional, default = FALSE) Title for the schematic plot.
 #' @param mm.grid (optional, default = TRUE) Plot grid in schematic plot.
-#' @param dev.size (optional, default = c(5.4, 4.465)). See same argument from
-#'   [wholebrain::schematic.plot()].
+#' @param dev.size (optional, default = c(5.4, 4.465)). Dimensions of window.
 #' @param pch (optional, default = 21) Graphical parameter for point shape.
 #' @param cex (optional, default = 0.5) Graphical parameter for text size.
 #' @param col (optional, default = "black") Graphical parameter for color.
 #' @param scale.bar (optional, default = TRUE)  Display a measure bar in the
 #'   schematic plot
 #' @param region.colors (optional, default = TRUE)  Display Allen Brain Atlas
-#'   colors in schemetic plot.
+#'   colors in schematic plot.
 #' @return Returns *dataset* a variable storing all mapped segmentation data to
 #'   registration data.
-#' @seealso See also [wholebrain::schematic.plot()].
 #' @export
 #' @md
 

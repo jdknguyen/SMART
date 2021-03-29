@@ -1,22 +1,21 @@
 #' @title Modified glassbrain function
-#' @description A modified version of [wholebrain::glassbrain()] that
+#' @description A modified version of glassbrain() that
 #' 1) Gives the user an option to plot the "jitter" in cell placement in original glassbrain function
 #' (the jitter gives a more space filled look) .
 #' 2) Does not show the glass brain display when high.res is set to "OFF" (otherwise set to TRUE or FALSE).
 #' @param dataset (required) Cell count dataset
 #' @param high.res (default = "OFF") TRUE or FALSE sets high or low resolution glassbrain. "OFF"
 #' doesn't plot plot the glassbrain. Options: "OFF", TRUE, FALSE
-#' @param dim (default = c(720, 1080))  Original argument from [wholebrain::glassbrain()].
-#' @param device (default = TRUE) Original argument from [wholebrain::glassbrain()].
-#' @param col (default = "region") Original argument from [wholebrain::glassbrain()].
+#' @param dim (default = c(720, 1080))  Original argument from glassbrain().
+#' @param device (default = TRUE) Original argument from glassbrain().
+#' @param col (default = "region") Original argument from glassbrain().
 #' @param cex (default = 0.5) Graphical parameter for text size.
-#' @param hemisphere (default = "right") Original argument from [wholebrain::glassbrain()].
-#' @param spheres (default = FALSE) Original argument from [wholebrain::glassbrain()].
-#' @param alpha (default = 1) Original argument from [wholebrain::glassbrain()].
-#' @param laterality (default = TRUE) Original argument from [wholebrain::glassbrain()].
-#' @param plane (default = "coronal") Original argument from [wholebrain::glassbrain()].
+#' @param hemisphere (default = "right") Original argument from glassbrain().
+#' @param spheres (default = FALSE) Original argument from glassbrain().
+#' @param alpha (default = 1) Original argument from glassbrain()].
+#' @param laterality (default = TRUE) Original argument from glassbrain().
+#' @param plane (default = "coronal") Original argument from glassbrain().
 #' @param jitter (default = FALSE) If TRUE, add jitter in z-axis to fill space between z-planes.
-#' @seealso See also the function [wholebrain::glassbrain()] from the wholebrain package.
 #' @export
 #' @md
 
