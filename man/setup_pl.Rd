@@ -35,7 +35,7 @@ Registration channel)
 entered.
 \item All z image numbers matching element 6. User manually entered.
 \item Savepaths list containing paths to the data directories. Will be
-NULL until \code{\link[=get_savepath]{get_savepath()}} is run.
+NULL until \code{\link[=get_savepaths]{get_savepaths()}} is run.
 \item List of sorted image paths. Will be NULL until \code{\link[=im_sort]{im_sort()}} is run.
 }
 

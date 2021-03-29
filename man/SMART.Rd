@@ -69,7 +69,7 @@ segmentation and registration data.
 \section{Part 5. Dataset manipulation and plotting}{
 
 \enumerate{
-\item \code{\link[=isolated_dataset]{isolated_dataset()}} Isolates a user-specified subset of the forward warped
+\item \code{\link[=isolate_dataset]{isolate_dataset()}} Isolates a user-specified subset of the forward warped
 dataset.
 \item \code{\link[=get_rois]{get_rois()}} Get subset of the forward warped dataframe of just regions of
 interest.
