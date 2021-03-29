@@ -20,7 +20,7 @@
 #' entered.
 #' 7)  All z image numbers matching element 6. User manually entered.
 #' 8) Savepaths list containing paths to the data directories. Will be
-#' NULL until [get_savepath()] is run.
+#' NULL until [get_savepaths()] is run.
 #' 10) List of sorted image paths. Will be NULL until [im_sort()] is run.
 #'
 #' Descriptions of list elements for a **whole brain**.

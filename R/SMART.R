@@ -51,7 +51,7 @@
 #'
 #' @section Part 5. Dataset manipulation and plotting:
 #'
-#' 1) [isolated_dataset()] Isolates a user-specified subset of the forward warped
+#' 1) [isolate_dataset()] Isolates a user-specified subset of the forward warped
 #' dataset.
 #' 2) [get_rois()] Get subset of the forward warped dataframe of just regions of
 #' interest.
