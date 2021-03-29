@@ -47,8 +47,7 @@ options: "coronal", "sagittal"}
 
 \item{mm.grid}{(optional, default = TRUE) Plot grid in schematic plot.}
 
-\item{dev.size}{(optional, default = c(5.4, 4.465)). See same argument from
-\code{\link[wholebrain:schematic.plot]{wholebrain::schematic.plot()}}.}
+\item{dev.size}{(optional, default = c(5.4, 4.465)). Dimensions of window.}
 
 \item{pch}{(optional, default = 21) Graphical parameter for point shape.}
 
@@ -60,7 +59,7 @@ options: "coronal", "sagittal"}
 schematic plot}
 
 \item{region.colors}{(optional, default = TRUE)  Display Allen Brain Atlas
-colors in schemetic plot.}
+colors in schematic plot.}
 }
 \value{
 Returns \emph{dataset} a variable storing all mapped segmentation data to
@@ -74,7 +73,4 @@ brain, this function should be used after the segmentation list \emph{segs} has
 been cleaned of duplicate cell counts. Note: if the imaging dataset is
 large this will be a time intensive process. Processing time will be
 printed once the function is finished.
-}
-\seealso{
-See also \code{\link[wholebrain:schematic.plot]{wholebrain::schematic.plot()}}.
 }
