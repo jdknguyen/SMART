@@ -14,6 +14,9 @@ talk about it here
 
 give an explanation here
 
+## Pipeline 👷
+![](docs/schematics/pipeline_schematic.PNG)
+
 ## Installation ⚙️
 
 - [Install SMART](docs/installation.md)
