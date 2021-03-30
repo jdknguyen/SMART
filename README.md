@@ -1,4 +1,4 @@
-# SimBA (Simple Behavioral Analysis)
+# SMART (Semi-Manual Alignment to Reference Templates)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Gitter chat](https://badges.gitter.im/USER/REPO.png)](https://gitter.im/SimBA-Resource/community)
