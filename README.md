@@ -4,11 +4,21 @@
 
 ## Mar-30-2021: SMART version 1.1 release
 
-talk about it here
+It's been a few years since the initial release of [SMART](https://github.com/mjin1812/SMART), and we have a few updates. First off, we've moved the repository here! We've also implemented some bug fixes and new features.
+
+The first set of new features allows users to 
+
+To do this, we've added three functions: `concatenate()`, 
 
 ### New Features
-- something
-- something
+- Duplicate cleanup bug fix
+- Forward warp bug fix
+- Function to count segmented cells before and after duplicate cleanup - `cell_counter()`
+- Concatenation function to merge multiple datasets
+- Function to compile cell counts from multiple datasets into one document
+- Function to calculate group data from multiple datasets
+- Voxelization function to allow users to run a voxel-based analysis, in addition to SMART's conventional region-based analysis, and generate cell density heatmaps
+- Function to run statistical tests on voxelized datasets
 
 ## What is SMART?
 
