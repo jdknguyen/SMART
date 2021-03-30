@@ -12,7 +12,9 @@ talk about it here
 
 ## What is SMART?
 
-give an explanation here
+Mapping immediate early gene (IEG) expression across intact brains is becoming a popular approach for identifying the brain-wide activity patterns underlying behavior. Registering whole brains to an anatomical atlas presents a technical challenge that has predominantly been tackled using automated voxel-based registration methods; however, these methods may fail when brains are damaged or only partially imaged, can be challenging to correct, and require substantial computational power. Here we present an open source package in R called SMART (semi-manual alignment to reference templates) as an extension to the WholeBrain framework for automated segmentation and semi-automated registration of experimental images to vectorized atlas plates from the Allen Brain Institute Mouse Common Coordinate Framework (CCF).
+
+The SMART package was created with the novice programmer in mind and introduces a streamlined pipeline for aligning, registering, and segmenting large LSFM volumetric datasets with the CCF across the anterior-posterior axis, using a simple ‘choice game’ and interactive user-friendly menus. SMART further provides the flexibility to register partial brains or discrete user-chosen experimental images across the CCF, making it compatible with analysis of traditionally sectioned coronal brain slices. 
 
 ## Pipeline 👷
 ![](docs/schematics/pipeline_schematic.PNG)
@@ -22,8 +24,8 @@ give an explanation here
 - [Install SMART](docs/installation.md)
 
 ## Tutorial 📚
-- [Introduction](docs/index.html) 🔨
-- [Full Tutorial](docs/tutorial.html) 🏭
+- [Introduction](docs/index.md) 🔨
+- [Full Tutorial](docs/tutorial.md) 🏭
 
 ## Resources 💾
 
