@@ -13,7 +13,7 @@ There are six main advancements that SMART builds on top of the wholebrain base 
 
 **Below is an illustration of the pipeline schematic:**
 
-![](docs/schematics/pipeline_schematic.PNG)
+![](schematics/pipeline_schematic.PNG)
 
 ## Conventions
 
