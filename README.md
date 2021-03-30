@@ -6,19 +6,19 @@
 
 It's been a few years since the initial release of [SMART](https://github.com/mjin1812/SMART), and we have a few updates. First off, we've moved the repository here! We've also implemented some bug fixes and new features.
 
-The first set of new features allows users to 
+The first set of new features allows users to compile data from multiple SMART analyses. To do this, we've added three functions: `concatenate()`, `cell_count_compilation()`, and `get_groups()`. `concatenate()` merges multiple datasets (after forward warp) and saves them in a new .RData file, which can be used to output group cell counts. `cell_count_compilation` determines cell counts from a list of user-specified regions from multiple SMART analyses. For ease of downstream processing (i.e. statistical tests), regional cell counts are output into one .csv file. `get_groups()` uses this .csv file to calculate group mean and standard deviation values for every region.
 
-To do this, we've added three functions: `concatenate()`, 
+The second set of new features enables users to conduct a voxel-based analysis (similar to other programs, like [ClearMap](http://christophkirst.github.io/ClearMap/build/html/index.html)). `voxelize()` generates a cell density map (saved as an .RData object, .csv file, and visual heatmap), and `voxel_stats()` runs statistical tests on these maps to determine group differences in cell density.
 
 ### New Features
 - Duplicate cleanup bug fix
 - Forward warp bug fix
 - Function to count segmented cells before and after duplicate cleanup - `cell_counter()`
-- Concatenation function to merge multiple datasets
-- Function to compile cell counts from multiple datasets into one document
-- Function to calculate group data from multiple datasets
-- Voxelization function to allow users to run a voxel-based analysis, in addition to SMART's conventional region-based analysis, and generate cell density heatmaps
-- Function to run statistical tests on voxelized datasets
+- Concatenation function to merge multiple datasets - `concatenate()`
+- Function to compile cell counts from multiple datasets into one document - `cell_count_compilation()`
+- Function to calculate group data from multiple datasets - `get_groups()`
+- Voxelization function to allow users to run a voxel-based analysis, in addition to SMART's conventional region-based analysis, and generate cell density heatmaps - `voxelize()`
+- Function to run statistical tests on voxelized datasets - `voxel_stats()`
 
 ## What is SMART?
 
