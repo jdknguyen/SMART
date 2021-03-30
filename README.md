@@ -4,7 +4,7 @@
 
 ## Mar-30-2021: SMART version 1.1 release
 
-It's been a few years since the initial release of [SMART](https://github.com/mjin1812/SMART), and we have a few updates. First off, we've moved the repository here! We've also implemented some bug fixes and new features.
+It's been a few years since the initial release of [SMART](https://github.com/mjin1812/SMART), and we have a few updates. First off, we've moved the repository from [Michelle's account](https://github.com/mjin1812/SMART) to here! We've also implemented some bug fixes and new features.
 
 The first set of new features allows users to compile data from multiple SMART analyses. To do this, we've added three functions: `concatenate()`, `cell_count_compilation()`, and `get_groups()`. `concatenate()` merges multiple datasets (after forward warp) and saves them in a new .RData file, which can be used to output group cell counts. `cell_count_compilation` determines cell counts from a list of user-specified regions from multiple SMART analyses. For ease of downstream processing (i.e. statistical tests), regional cell counts are output into one .csv file. `get_groups()` uses this .csv file to calculate group mean and standard deviation values for every region.
 
@@ -50,9 +50,6 @@ The SMART package was created with the novice programmer in mind and introduces 
 
 ### Golden Lab webpage
 - [Sam Golden Lab UW](https://goldenneurolab.com/) 🧪🧫🐁
-
-## License 📃
-[insert license info?]
 
 ## Contributors 🤼
 - [Michelle Jin](https://github.com/mjin1812)
