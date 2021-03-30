@@ -47,4 +47,4 @@ The SMART package was created with the novice programmer in mind and introduces 
 ## Contributors 🤼
 - [Michelle Jin](https://github.com/mjin1812)
 - [Joseph Nguyen](https://github.com/jdknguyen)
-- [Rajtarun Madangopal]
+- Rajtarun Madangopal
