@@ -1,4 +1,4 @@
-## Introduction
+# Introduction
 
 This R package builds a pipeline interfacing with the [wholebrain](https://github.com/tractatus/wholebrain) package to process whole brain imaging datasets. Datasets of a handful of single slice images across the brain can also be fed into this pipeline. For brevity, I’ll refer to these datasets as partial brains.
 
