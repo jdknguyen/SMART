@@ -18,6 +18,17 @@ give an explanation here
 
 - [Install SMART](docs/installation.md)
 
+## Tutorial 📚
+- [Introduction](docs/index.html) 🔨
+- [Full Tutotiral](docs/tutorial.html) 🏭
+- [Using DeepPoseKit in SimBA](docs/DeepPoseKit_in_SimBA.md) 📙
+- [Using DeepLabCut through SimBA](docs/Tutorial_DLC.md) 📗
+- [SimBA generic tutorial](docs/tutorial.md) 📘
+- [SimBA friendly asked questions (FAQ)](docs/FAQ.md) 📕
+- [SimBA behavioral annotation interface](docs/labelling_aggression_tutorial.md) 🏷️
+- [Using user-defined ROIs in SimBA](/docs/ROI_tutorial.md) 🗺️
+- [Using multi-animal pose (maDLC/SLEAP) in SimBA](/docs/Multi_animal_pose.md) 🐭🐭
+
 ## Resources 💾
 
 ### Wholebrain webpage
@@ -26,36 +37,17 @@ give an explanation here
 ### Open brain map
 - [Interactive open brain map](https://http://www.openbrainmap.org/#2/7345/5135) [map emoji]
 
+### SMART example data and references
+- [Access sample data here](docs/example_data.html)[something emoji idk]
+
 ### Golden Lab webpage
 - [Sam Golden Lab UW](https://goldenneurolab.com/) 🧪🧫🐁
 
 
 
 ## License 📃
-This project is licensed under the MIT License. Note that the software is provided 'as is', without warranty of any kind, express or implied. 
-
-If you use **any** part of the code or data, please cite us! :)
-
-    @article {Nilsson2020.04.19.049452,
-      author = {Nilsson, Simon RO and Goodwin, Nastacia L. and Choong, Jia Jie and Hwang, Sophia and Wright, Hayden R and Norville, Zane C and Tong, Xiaoyu and Lin, Dayu and Bentzley, Brandon S. and Eshel, Neir and McLaughlin, Ryan J and Golden, Sam A.},
-      title = {Simple Behavioral Analysis (SimBA) {\textendash} an open source toolkit for computer classification of complex social behaviors in experimental animals},
-      elocation-id = {2020.04.19.049452},
-      year = {2020},
-      doi = {10.1101/2020.04.19.049452},
-      publisher = {Cold Spring Harbor Laboratory},
-
-	URL = {https://www.biorxiv.org/content/early/2020/04/21/2020.04.19.049452},
-	eprint = {https://www.biorxiv.org/content/early/2020/04/21/2020.04.19.049452.full.pdf},
-	journal = {bioRxiv}
-
-
-## References 📜
-
-[![Foo](https://github.com/sgoldenlab/simba/blob/master/images/cos_center_logo_small.original.png)](https://osf.io/d69jt/) [![Foo](https://github.com/sgoldenlab/simba/blob/master/images/twitter.png)](https://twitter.com/GoldenNeuron?s=20)
+[insert license info?]
 
 ## Contributors 🤼
-- [Simon Nilsson](https://github.com/sronilsson)
-- [Jia Jie Choong](https://github.com/inoejj)
-- [Sophia Hwang](https://github.com/sophihwang26)
-- [Aasiya Islam](https://github.com/aasiya-islam)
-- [Xiaoyu Tong](https://github.com/Xiaoyu-Tong)
+- [Michelle Jin](https://github.com/mjin1812)
+- [Joseph Nguyen](https://github.com/jdknguyen)
