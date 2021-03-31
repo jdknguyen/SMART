@@ -138,6 +138,8 @@ Do you want to change any settings: Y/N?
 
 ```
 
+---
+
 **Step 2.**
 
 `im_sort()` User friendly way to sort images from the registration channel. Asks for user input to account for flexible naming conventions for images.
