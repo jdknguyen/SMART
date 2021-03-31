@@ -38,8 +38,8 @@ The SMART package was created with the novice programmer in mind and introduces 
 - [Full Tutorial](docs/tutorial.md) 🏭
 
 ## Notes
-- [Updates](docs/updates.md) insert emoji here 🧮
-- [Caveats](docs/caveats.md) insert emoji here 🖥️
+- [Updates](docs/updates.md) 🧮
+- [Caveats](docs/caveats.md) 🖥️
 - [Development info](docs/development_info.md) 💾
 
 ## Resources 💾
