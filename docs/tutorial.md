@@ -70,4 +70,40 @@ For processing a wholebrain dataset, the pipeline is split into 6 sections. Thes
 
 Below is a walkthrough of each of these functions and the pipeline as a whole using an example whole brain dataset.
 
+## Part 1: Setup pipeline ##
+
+This sections sets up analysis parameters, sorted image paths, and generates savepaths and directories for the rest of the pipeline.
+
+**Step 1.**
+
+`setup_pl()` This function asks the user for setup information. Based on input from the user, the function returns a list of parameters for either a whole or partial brain analysis.
+
+```diff
+# Scroll to the details section of the help page to see the setup parameters
+?setup_pl()
+
+# Run setup_pl, enter parameter information to the console, 
+# and store the output list into a variable named setup
+
+setup <- setup_pl()
+
+# Check or modify your setup parameters 
+setup <- setup_pl(setup)
+
+# Note: Whenever a different user works on analyzing the same dataset,
+# run the above command to change user initials. This will keep track of
+# who did what. 
+```
+
+### Tips: When providing folder paths, do not put quotes around the path to the console input.
+
+
+
+
+
+
+
+
+
+
 
