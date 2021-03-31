@@ -159,6 +159,8 @@ setup <- im_sort(setup, extension = "tif", position = 9)
 setup$image_paths
 ```
 
+---
+
 **Step 3.**
 
 `get_savepaths()` Create standardized save directories based on the setup information from `setup_pl()`. setup is returned with setup$savepaths filled containing savepaths to subfolders in the output folder.
@@ -307,6 +309,8 @@ If you are unsatisfied later with a few internal reference coordinate alignments
 > setup <- choice(setup, touchup = c(1.91, -0.42 ))
 ```
 
+---
+
 `brainmorph()` **(W)** Generate a brain morph plot showing areas of relative expansion or compression along the AP axis compared to the Allen Mouse Brain Atlas AP coodinates (normalized to 1). The reference atlas points used to generate the morph plot are plotted in red. Setting `saveplot = TRUE` will save the brain morph into the data folder designated by `setup$savepaths$out_RC_brain_morph`.
 
 ```diff
@@ -319,6 +323,8 @@ brainmorph(setup, saveplot = FALSE)
 <br>
 <b>Brainmorph plot</b>
 </p>
+
+---
 
 **Step 5.**
 
@@ -364,6 +370,8 @@ This section automates looping through through and registering all atlas plates 
 </p>
 
 The schematic above illustrates the user-friendly console interface that allows for modification of the correspondence plates on a given atlas plate. The `regi_loop()` function integrates this user-friendly registration interface with the pipeline.
+
+---
 
 **Step 6.**
 
@@ -444,6 +452,8 @@ An explanation of the filter parameters according to WholeBrain documentation is
 - **resize:** positive numeric value indicates matching of atlas to brain section. Increase to make atlas (orange outlines in registration) smaller, decrease to make it larger. If too small atlas wont fit image and registration will not start. Usual range 0.3 - 0.9.
 - **downsample:** downsampling to save computational time (default 0.25).
 
+---
+
 **Step 8.**
 
 `seg_loop()` This function loops through the z images in the segmentation folder path. For a whole brain, every N images is segmented, where N is equal to `setup$seg_step`. For a partial brain, all the images in `setup$regi_z` are segmented.
@@ -454,6 +464,8 @@ segs <- seg_loop(setup, filter)
 ```
 
 ### Note: If the imaging dataset is large, steps 8, 9, & 10 will be time intensive processes. Processing time will be printed after each of these functions are finished.
+
+---
 
 **Step 9.**
 
@@ -469,6 +481,8 @@ segs <- clean_duplicates(setup, segs, z_thresh = 10, compare_depth = 200)
 # compare_depth -  Comparision depth in (um). Compare a single image with adjacent 
 # images up to 200 um posterior.
 ```
+
+---
 
 `cell_counter()` **(W)** Determines total number of cells segmented, retained, and removed by duplicate cleanup. This is useful to determine the efficacy of `clean_duplicates()`.
 
@@ -491,6 +505,8 @@ segs <- clean_duplicates(setup, segs, z_thresh = 10, compare_depth = 200)
 [1] "51509 total cells retained"
 [1] "162700 total cells removed"
 ```
+
+---
 
 **Step 10.**
 
@@ -557,6 +573,8 @@ wholebrain::dot.plot(rois)
 <b>Region plot</b>
 </p>
 
+---
+
 `get_sunburst()` **(O)** Generate a sunburst plot using a forward warped dataset.
 
 ```diff
@@ -574,6 +592,8 @@ Click [here](https://smartrpackage.shinyapps.io/smart_sample_dataset/) for an in
 
 ### Note: By setting the `rois` argument, the sunburst will display only ROI data. If the `parent` argument is set to `FALSE`, the base layer in sunburst will be the first ROI.
 
+---
+
 `get_tree()` **(O)** Create a dataframe of hierarchical region cell count data.
 
 The code below generates a dataframe of the hierarchy tree for the hypothalamus:
@@ -585,6 +605,8 @@ View(tree)
 ```
 
 ### Note: this dataframe may be useful for generating other heirarchical plots such as [treemaps](https://github.com/cran/treemap).
+
+---
 
 `glassbrain2()` **(O)** A modified version of `wholebrain::glassbrain()`. New options include:
 
@@ -600,6 +622,8 @@ glassbrain
 ```
 
 Click [here](https://smartrpackage.shinyapps.io/smart_sample_dataset/) for an interactive glasssbrain.
+
+---
 
 `get_table()` **(O)** Generates a dataframe showing region acronyms, their full name, hierachical paths, total cell counts, left and right counts, and cell count percentages.
 
