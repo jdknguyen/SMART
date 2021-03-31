@@ -6,7 +6,7 @@ For processing a wholebrain dataset, the pipeline is split into 6 sections. Thes
 
 **Part 1: Setup pipeline**
 
-  - [`setup_pl()`](id#1) User friendly way to setup parameters for whole
+  - `setup_pl()` User friendly way to setup parameters for whole
     or partial brain pipeline analysis.
   - `im_sort()` A function to sort image paths for imaging
     datasets.
@@ -76,7 +76,7 @@ This sections sets up analysis parameters, sorted image paths, and generates sav
 
 **Step 1.**
 
-`setup_pl()`(id#1) This function asks the user for setup information. Based on input from the user, the function returns a list of parameters for either a whole or partial brain analysis.
+`setup_pl()` This function asks the user for setup information. Based on input from the user, the function returns a list of parameters for either a whole or partial brain analysis.
 
 ```diff
 # Scroll to the details section of the help page to see the setup parameters
@@ -97,12 +97,46 @@ setup <- setup_pl(setup)
 
 ### Tips: When providing folder paths, do not put quotes around the path to the console input.
 
+For convention, sequential image numbers are z image numbers, even for a partial brain analysis. Z image number should start at 1 and end at the number of images. Image files should start indexing at 1 in the filenames to match image number.
 
+For a whole brain analysis, the first and last atlas plates must be qualitatively aligned with the first and last z image numbers. Note that the `setup$internal_ref_z`, `setup$regi_AP`, `setup$regi_z` parameters are not user modifiable and will be NULL until the `choice()` or `interpolate()` functions are run.
 
+Additionally, there are a few default pipeline parameters for whole brain analysis:
+- Spacing between registrations (mm). DEFAULT: 0.100
+- Segmentation step (integer). DEFAULT: 1.
+- AP coordinates of internal reference planes. DEFAULT: 1.91, 1.10, -.42, -0.93 , -1.94 , -2.95, -3.96.
 
+The above coordinates correspond to PFC, NAc, antHyp, start of HIP, posterior Hyp, VTA, and the PAG, respectively. These coordinates will be the atlas plates used to “calibrate” to internal z images. They’ll be used to interpolate and match the z images of remaining atlas plates. They were chosen because:
 
+1) Based on our experience, they contain easy internal region landmarks that can be consistently identified by different users
+2) They are somewhat evenly spaced throughout the brain.
 
+However, these coordinates are user modifiable to account for user preference and varying AP ranges of imaging datasets. If you are using this pipeline for the first time, I recommend you take the default values.
 
+The console code below shows the setup list I am using:
+
+```diff
+# Check setup list
+
+> setup<- setup_pl(setup)
+
+Your animal ID         :  1602
+Your initials          :  MJ
+Your registration path :  D:/output_R15_1602_SG_Rein_NoTest_coronal/R15_1602_SG_Rein_NoTest_coronal_final_C02_betterrotation
+Your segmentation path :  D:/output_R15_1602_SG_Rein_NoTest_coronal/R15_1602_SG_Rein_NoTest_coronal_final_C01_betterrotation
+Your output path       :  D:/SMART_example_data/output
+Your z spacing         :  0.0025
+Your registration step :  0.1
+Your segmentation step :  1
+Your first AP          :  2.82
+Your first z           :  200
+Your last AP           :  -4.77
+Your last z            :  2925
+Your internal reference AP coordinates:  1.91 1.1 -0.42 -0.93 -1.94 -2.44 -2.95 -3.45 -3.96
+Please review your setup information above:
+Do you want to change any settings: Y/N?
+>
+```
 
 
 
