@@ -222,7 +222,7 @@ This section is necessary for whole brain datasets only. Users first “calibrat
 
 Below is my initial console output when I run `choice()` with my setup variable.
 
-```
+```diff
 # Run the choice game and save the aligned 
 # z reference number back into the setup list:
 
@@ -234,3 +234,13 @@ Your current image sampling choice_step is  200
 Which image matches best?
 Enter 1, 2 or 3:
 ```
+
+**How the choice game works:**
+
+The choice game will cycle through the internal reference atlas plates (represented below by dotted vertical lines). Three choice windows will popup for each reference AP coordinate, corresponding to choices 1,2 or 3, respectively. The user simply compares the corresponding atlas plate with the 3 choice windows and enters the best qualitative match.
+
+![](schematics/midpoint_schem.PNG)
+
+
+
+
