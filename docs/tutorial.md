@@ -244,7 +244,17 @@ The choice game will cycle through the internal reference atlas plates (represen
 <!-- ![**Internal reference atlas plates**](){width=30%} -->
 </p>
 
+<center>
 
+<!-- ![**Internal reference atlas plates**](){width=30%} -->
+
+``` r
+run_path("schematics/Reference_atlas_schem.PNG")
+```
+
+<img src="docs/schematics/Reference_atlas_schem.PNG" width="642" />
+
+</center>
 
 
 
