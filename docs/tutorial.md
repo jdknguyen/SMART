@@ -43,7 +43,7 @@ For processing a wholebrain dataset, the pipeline is split into 6 sections. Thes
 
 **Part 5. Dataset manipulation and plotting**
 
-  - `isolated_dataset()` Isolates a user-specified subset of
+  - `isolate_dataset()` Isolates a user-specified subset of
     the forward warped dataset.
   - `get_rois()` Gets a subset of the forward warped dataframe
     of just regions of interest.
@@ -424,6 +424,95 @@ Below is an example of a registration before and after manual improvement:
 ## Part 4: Segmentation, duplicate cleanup, & forward warping
 
 This section loops through all the images of the segmentation channel and automates the forward looping process. At the end of this section, you will have a mapped dataset!
+
+**Step 7.**
+
+`filter_loop()` This function takes a registration or segmentation filter and loops through all images in a partial brain or just the reference images in either the registration or segmentation channel. The `wholebrain::segment()` function is used to display the segmentation output. There is a console menu option for the user to adjust filter parameters if they need.
+
+```diff
+# Check and modify filter settings in the segmentaion channel
+filter <- filter_loop(setup, channel = "seg")
+```
+
+An explanation of the filter parameters according to WholeBrain documentation is provided below:
+- **alim:** a two scalar integer vector with minimum and maximum allowed soma area size in pixels. threshold.range: a two scalar integer vector with minimum and maximum fluorescent intensity to iteratively search for soma in.
+- **max:** single integer value that determines what maximum pixel intensity to render in 8-bit rendering mode.
+- **min:** single integer value that determines what minimum pixel intensity to render in 8-bit rendering mode. brain.threshold: single integer value sets the segmentation of brain outline used for registration later on.
+- **blur:** integer value with added blur of brain section outline. Default is 4, increase if you have damaged tissue at the edges.
+- **resize:** positive numeric value indicates matching of atlas to brain section. Increase to make atlas (orange outlines in registration) smaller, decrease to make it larger. If too small atlas wont fit image and registration will not start. Usual range 0.3 - 0.9.
+- **downsample:** downsampling to save computational time (default 0.25).
+
+**Step 8.**
+
+`seg_loop()` This function loops through the z images in the segmentation folder path. For a whole brain, every N images is segmented, where N is equal to `setup$seg_step`. For a partial brain, all the images in `setup$regi_z` are segmented.
+
+```diff
+# Run segmentation loop and store the output
+segs <- seg_loop(setup, filter)
+```
+
+### Note: If the imaging dataset is large, steps 8, 9, & 10 will be time intensive processes. Processing time will be printed after each of these functions are finished.
+
+**Step 9.**
+
+`clean_duplicates()` **(W)** Duplicate cell count clean up of segmentation output from the `seg_loop()` function. This step is only necessary for large imaging datasets where the z step size is smaller than the width of a cell body.
+
+```diff
+# Clean duplicate cell counts 
+segs <- clean_duplicates(setup, segs, z_thresh = 10, compare_depth = 200)
+
+# z_thresh - Threshold (in um) in the z-plane for the maximum z distance 
+# before a cell is counted as another cell.
+
+# compare_depth -  Comparision depth in (um). Compare a single image with adjacent 
+# images up to 200 um posterior.
+```
+
+# INSERT PART ABOUT CELL COUNTER HERE
+
+**Step 10.**
+
+`forward_warp()` **(W)** Loop through all segmented cells and perform forward warp loop back onto atlas space using registration and segmentation data. There are user options for plotting a schematic plot and saving forward warp images. The function will automatically interpolate AP coordinate values of z images in between atlas plates and assign them to the dataset.
+
+```diff
+# Perform forward warp
+dataset <- forward_warp(setup, segs, regis)
+```
+
+Below are representative forward warp and schematic images:
+
+<p align="center">
+<img src="schematics/forwardwarp.PNG" width="600" />
+<br>
+<b>Forward warp image</b>
+</p>
+
+<p align="center">
+<img src="schematics/schematic.PNG" width="300" />
+<br>
+<b>Schematic plot</b>
+</p>
+
+### Note: `forward_warp()` will automatically clean up any cell counts that aren’t assigned a region ID.
+
+## Part 5: Dataset manipulation and plotting:
+
+Following Step 10, there are no more steps in the pipeline. The remaining functions are designed for easy manipulation and plotting of the dataset.
+
+# INSERT ISOLATED DATASET STUFF HERE
+
+## Part 6. Aggregating data from multiple analyses
+
+
+
+  - `concatenate()` Combines datasets from multiple brains.
+  - `cell_count_compilation()` Compiles cell counts from
+    multiple brains.
+  - `get_groups()` Compiles group data from individual brains.
+  - `voxelize()` Generate voxel-based heatmaps from multiple
+    brains.
+  - `voxel_stats()` Run statistical tests on voxel-based
+    heatmaps.
 
 
 
