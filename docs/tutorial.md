@@ -240,19 +240,15 @@ Enter 1, 2 or 3:
 The choice game will cycle through the internal reference atlas plates (represented below by dotted vertical lines). Three choice windows will popup for each reference AP coordinate, corresponding to choices 1,2 or 3, respectively. The user simply compares the corresponding atlas plate with the 3 choice windows and enters the best qualitative match.
 
 <p align="center">
-<img src="schematics/midpoint_schem.PNG" width="642" />
-<!-- ![**Internal reference atlas plates**](){width=30%} -->
+<img src="schematics/midpoint_schem.PNG" width="300" />
+**Internal reference atlas plates**
 </p>
 
 <center>
 
 <!-- ![**Internal reference atlas plates**](){width=30%} -->
 
-``` r
-run_path("schematics/Reference_atlas_schem.PNG")
-```
-
-<img src="docs/schematics/Reference_atlas_schem.PNG" width="642" />
+<img src="schematics/midpoint_schem.PNG" width="642" />
 
 </center>
 
