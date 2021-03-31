@@ -6,7 +6,7 @@ For processing a wholebrain dataset, the pipeline is split into 6 sections. Thes
 
 **Part 1: Setup pipeline**
 
-  - `setup_pl()` User friendly way to setup parameters for whole
+  - [`setup_pl()`](id#1) User friendly way to setup parameters for whole
     or partial brain pipeline analysis.
   - `im_sort()` A function to sort image paths for imaging
     datasets.
@@ -76,7 +76,7 @@ This sections sets up analysis parameters, sorted image paths, and generates sav
 
 **Step 1.**
 
-`setup_pl()` This function asks the user for setup information. Based on input from the user, the function returns a list of parameters for either a whole or partial brain analysis.
+`setup_pl()`(id#1) This function asks the user for setup information. Based on input from the user, the function returns a list of parameters for either a whole or partial brain analysis.
 
 ```diff
 # Scroll to the details section of the help page to see the setup parameters
