@@ -3,7 +3,6 @@
 ## Raw image dataset
 
 Our compressed raw example image dataset is provided online courtesy of The Open Science Framework, a free online project management repository. It is easily extractable using 7-Zip, an open-source file archiver.
-
 ### [Download raw dataset!](https://osf.io/y9uax/)
 
 **Extraction directions:**
