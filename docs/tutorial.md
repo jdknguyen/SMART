@@ -729,7 +729,7 @@ group_matrices <- voxelize(brains_list = c("NT_0T_T06", "NT_0T_T13", "D1_0T_T01"
 A sample output is below:
 
 <p align="center">
-<img src="schematics/heatmap.PNG" width="500" />
+<img src="schematics/heatmap.PNG" width="550" />
 <br>
 <b>Sample Group Mean Heatmap</b>
 </p>
@@ -747,7 +747,7 @@ stat_matrix <- voxel_stats(input = "C:/Users/nguyenjd/Desktop/JDN Files/SMART Fi
 A sample output is below. Green dots indicate group 2 (D60) being higher, red dots indicate group 1 (D1) being higher.
 
 <p align="center">
-<img src="schematics/voxel_stats.PNG" width="500" />
+<img src="schematics/voxel_stats.PNG" width="550" />
 <br>
 <b>Sample Voxel Statistics</b>
 </p>
