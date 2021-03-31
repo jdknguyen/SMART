@@ -708,9 +708,46 @@ The output is the following table:
 
 ---
 
-`voxelize()` Generates voxel-based heatmaps from multiple brains.
+`voxelize()` Generates voxel-based heatmaps from multiple brains. For each test group, this function outputs a heatmap for every brain, a group mean heatmap, and a group standard deviation heatmap (to isolate spots with the most variable cell counts). For each heatmap, the function also outputs the data into a .csv file and an R object called `group_matrices`.
+
+```diff
+group_matrices <- voxelize(brains_list = c("NT_0T_T06", "NT_0T_T13", "D1_0T_T01", "D1_0T_T03", "D60_1T_T06", "D60_1T_T09"),
+                           data_list = c("D:/2021-02-25_1.7_1.6_All_RData_Files/Animal_0T_T06_2021-02-25_OD.RData",
+                                         "D:/2021-02-25_1.7_1.6_All_RData_Files/Animal_0T_T13_2021-02-25_MB.RData",
+                                         "D:/2021-02-25_1.7_1.6_All_RData_Files/Animal_0T_T01_2021-02-25_JDN.RData",
+                                         "D:/2021-02-25_1.7_1.6_All_RData_Files/Animal_0T_T03_2021-02-25_OD.RData",
+                                         "D:/2021-02-25_1.7_1.6_All_RData_Files/Animal_1T_T06_2021-02-25_OD.RData",
+                                         "D:/2021-02-25_1.7_1.6_All_RData_Files/Animal_1T_T09_2021-02-25_OD.RData"),
+                           datasets = c("isolated_dataset", "isolated_dataset", "isolated_dataset", 
+                                        "isolated_dataset", "isolated_dataset", "isolated_dataset"),
+                           groups_list = c("NT", "NT", "D1", "D1", "D60", "D60"),
+                           groups = c("NT", "D1", "D60"), ML_bounds = c(-4, 4), DV_bounds = c(-8, -1), 
+                           detection_bounds = c(0.1, 0.1), resolution = 10, heatmaps = TRUE, save = TRUE,
+                           output = "C:/Users/nguyenjd/Desktop/JDN Files/SMART Files/heatmaps")
+```
+
+A sample output is below:
+
+<p align="center">
+<img src="schematics/heatmaps.PNG" width="500" />
+<br>
+<b>Sample Group Mean Heatmap</b>
+</p>
 
 ---
 
-`voxel_stats()` Runs statistical tests on voxel-based heatmaps.
+`voxel_stats()` Runs statistical tests on voxel-based heatmaps. This function uses a two-tailed t-test at every point to determine group differences.
 
+```diff
+stat_matrix <- voxel_stats(input = "C:/Users/nguyenjd/Desktop/JDN Files/SMART Files/heatmaps/group_matrices_100_um_voxels.RData", 
+                           group_matrices = group_matrices, groups = c("D1", "D60"), ML_bounds = c(-4, 4), DV_bounds = c(-8, -1), 
+                           p_value = 0.05, output = "C:/Users/nguyenjd/Desktop/JDN Files/SMART Files")
+```
+
+A sample output is below. Green dots indicate group 2 (D60) being higher, red dots indicate group 1 (D1) being higher.
+
+<p align="center">
+<img src="schematics/voxel_stats.PNG" width="500" />
+<br>
+<b>Sample Voxel Statistics</b>
+</p>
