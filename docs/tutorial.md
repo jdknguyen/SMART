@@ -519,8 +519,20 @@ Below are representative forward warp and schematic images:
 
 Following Step 10, there are no more steps in the pipeline. The remaining functions are designed for easy manipulation and plotting of the dataset.
 
-# INSERT ISOLATED DATASET STUFF HERE
+`isolated_dataset()` **(O)** Isolate a user-specified subset of the forward warped dataset. The user may use any or all of the available parameters they choose to isolate their cells of interest. An explanation of the `isolate_dataset()` parameters is provided below:
 
+- **start_AP** (default = NULL) Most anterior AP to retain cells.
+- **end_AP** (default = NULL) Most posterior AP to retain cells.
+- **hemisphere** (default = "B") Hemisphere to retain cells from ("L", "R", or "B").
+- **plates** (default = c(1:length(unique(dataset$image)))) Vector of registration plates to retain plates from; specify plate numbers relative to the first registration plate in the current analysis.
+- **mirror** (optional, default = FALSE) Boolean to specify whether all cells will be mirrored across the midline.
+- **flip** (optional, default = FALSE) Boolean to specify whether all cells will be flipped across the midline.
+- **bounds** (optional, default = c()) Vector to specify whether cells within a circular or rectangular area should be retained. For circles, the vector should be formatted as: c("circle", ML-center, DV-center, radius). For rectangles, the vector should be formatted as: c("rectangle", ML-top-left-corner, DV-top-left-corner, width, height).
+- **rois** (optional, default = c("grey")) Vector to specify regions of interest to retain cells from.
+
+```diff
+isolated_dataset <- isolate_dataset(setup, dataset, start_AP = 1.71, end_AP = 1.81, hemisphere = "L", plates = c(2), mirror = FALSE, flip = FALSE, bounds = c("circle", 0, -4, 3), rois = c("CH"))
+```
 
 `get_rois()` **(O)** Allows the user to enter a character vector of Allen Mouse Brain Atlas abbreviations of regions of interest (ROIs). A subset of the dataframe from the wholebrain dataset of just the ROIs (and their subregions) are returned.
 
