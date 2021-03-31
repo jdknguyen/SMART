@@ -51,7 +51,7 @@ The SMART package was created with the novice programmer in mind and introduces 
 - [Interactive open brain map](https://http://www.openbrainmap.org/#2/7345/5135) 🗺️
 
 ### SMART example data and references
-- [Access sample data here](docs/example_data.html) 📘
+- [Access sample data here](docs/example_data.md) 📘
 
 ### Golden Lab webpage
 - [Sam Golden Lab UW](https://goldenneurolab.com/) 🧪🧫🐁
