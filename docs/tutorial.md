@@ -538,6 +538,18 @@ Click [here](https://smartrpackage.shinyapps.io/smart_sample_dataset/) for an in
 
 ### Note: By setting the `rois` argument, the sunburst will display only ROI data. If the `parent` argument is set to `FALSE`, the base layer in sunburst will be the first ROI.
 
+`get_tree()` **(O)** Create a dataframe of hierarchical region cell count data.
+
+The code below generates a dataframe of the hierarchy tree for the hypothalamus:
+
+```diff
+# Hierarchical dataframe of just the hypothalamus
+tree <- get_tree(dataset, rois = "HY")
+View(tree)
+```
+
+### Note: this dataframe may be useful for generating other heirarchical plots such as [treemaps](https://github.com/cran/treemap).
+
 `glassbrain2()` **(O)** A modified version of `wholebrain::glassbrain()`. New options include:
 
 1) Gives the user an option to turn off the “jitter” in cell placement in original glassbrain function (the jitter gives a more space filled look).
