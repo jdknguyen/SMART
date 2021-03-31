@@ -534,6 +534,8 @@ Following Step 10, there are no more steps in the pipeline. The remaining functi
 isolated_dataset <- isolate_dataset(setup, dataset, start_AP = 1.71, end_AP = 1.81, hemisphere = "L", plates = c(2), mirror = FALSE, flip = FALSE, bounds = c("circle", 0, -4, 3), rois = c("CH"))
 ```
 
+---
+
 `get_rois()` **(O)** Allows the user to enter a character vector of Allen Mouse Brain Atlas abbreviations of regions of interest (ROIs). A subset of the dataframe from the wholebrain dataset of just the ROIs (and their subregions) are returned.
 
 `get_rois()` is especially useful in plotting cell count tables of regions of interest:
