@@ -242,5 +242,7 @@ The choice game will cycle through the internal reference atlas plates (represen
 <p align="center">
 <img src="schematics/midpoint_schem.PNG" width="300" />
 <br>
-<b>Internal reference atlas plates**</b>
+<b>Internal reference atlas plates</b>
 </p>
+
+
