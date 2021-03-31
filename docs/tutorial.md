@@ -662,11 +662,49 @@ group_dataset <- concatenate(data_list = c("D:/2021-02-25_1.7_1.6_All_RData_File
 
 ---
 
-`cell_count_compilation()` Compiles cell counts from multiple brains.
+`cell_count_compilation()` Compiles cell counts from multiple brains into a .csv file. The user can specify which regions and subregions to include in the compilation file.
+
+```diff
+cell_count_table <- cell_count_compilation(regions = c("CH"), subregions = 3, clean_zeros = TRUE, hierarchy_level = FALSE,
+                                           datasets = c("isolated_dataset", "isolated_dataset", "isolated_dataset", 
+                                                        "isolated_dataset", "isolated_dataset", "isolated_dataset"),
+                                           files_list = c("D:/2021-02-25_1.7_1.6_All_RData_Files/Animal_0T_T06_2021-02-25_OD.RData",
+                                                          "D:/2021-02-25_1.7_1.6_All_RData_Files/Animal_0T_T13_2021-02-25_MB.RData",
+                                                          "D:/2021-02-25_1.7_1.6_All_RData_Files/Animal_0T_T01_2021-02-25_JDN.RData",
+                                                          "D:/2021-02-25_1.7_1.6_All_RData_Files/Animal_0T_T03_2021-02-25_OD.RData",
+                                                          "D:/2021-02-25_1.7_1.6_All_RData_Files/Animal_1T_T06_2021-02-25_OD.RData",
+                                                          "D:/2021-02-25_1.7_1.6_All_RData_Files/Animal_1T_T09_2021-02-25_OD.RData"),
+                                           brains_list = c("NT_0T_T06", "NT_0T_T13", "D1_0T_T01", "D1_0T_T03", "D60_1T_T06", "D60_1T_T09"),
+                                           output = "C:/Users/nguyenjd/Desktop/JDN Files/SMART Files/2021-03-30 Compilation.csv")
+```
+
+The output is the following table:
+
+<p align="center">
+<img src="schematics/cell_counts.PNG" width="500" />
+<br>
+<b>Cell Counts</b>
+</p>
 
 ---
 
-`get_groups()` Compiles group data from individual brains.
+`get_groups()` Compiles group data from individual brains. Using the output of `cell_count_compilation()`, this function gives the mean and standard deviations for every region for every group.
+
+```diff
+group_table <- get_groups(input = "C:/Users/nguyenjd/Desktop/JDN Files/SMART Files/2021-03-30 Compilation.csv",
+                          brains_list = c("NT_0T_T06", "NT_0T_T13", "D1_0T_T01", "D1_0T_T03", "D60_1T_T06", "D60_1T_T09"),
+                          groups_list = c("NT", "NT", "D1", "D1", "D60", "D60"),
+                          groups = c("NT", "D1","D60"),
+                          output = "C:/Users/nguyenjd/Desktop/JDN Files/SMART Files/2021-03-30 Groups.csv")
+```
+
+The output is the following table:
+
+<p align="center">
+<img src="schematics/groups.PNG" width="500" />
+<br>
+<b>Group Means and Standard Deviations</b>
+</p>
 
 ---
 
