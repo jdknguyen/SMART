@@ -729,7 +729,7 @@ group_matrices <- voxelize(brains_list = c("NT_0T_T06", "NT_0T_T13", "D1_0T_T01"
 A sample output is below:
 
 <p align="center">
-<img src="schematics/heatmaps.PNG" width="500" />
+<img src="schematics/heatmap.PNG" width="500" />
 <br>
 <b>Sample Group Mean Heatmap</b>
 </p>
