@@ -650,15 +650,29 @@ The table below is representative of the dataframe displayed:
 
 The tables and plots generated in Part 5 are designed for use with one brain. The following functions allow the user to aggregate data from multiple brains.
 
+`concatenate()` Combines datasets from multiple brains into one large group dataset. This aggregate dataset can be visualized through the functions in Part 5.
 
-  - `concatenate()` Combines datasets from multiple brains.
-  - `cell_count_compilation()` Compiles cell counts from
-    multiple brains.
-  - `get_groups()` Compiles group data from individual brains.
-  - `voxelize()` Generate voxel-based heatmaps from multiple
-    brains.
-  - `voxel_stats()` Run statistical tests on voxel-based
-    heatmaps.
+```diff
+group_dataset <- concatenate(data_list = c("D:/2021-02-25_1.7_1.6_All_RData_Files/Animal_0T_T06_2021-02-25_OD.RData",
+                                           "D:/2021-02-25_1.7_1.6_All_RData_Files/Animal_0T_T13_2021-02-25_MB.RData",
+                                           "D:/2021-02-25_1.7_1.6_All_RData_Files/Animal_0T_T15_2021-02-25_JDN.RData",
+                                           "D:/2021-02-25_1.7_1.6_All_RData_Files/Animal_0T_T18_2021-02-25_OD.RData"),
+                             datasets = c("isolated_dataset", "isolated_dataset", "isolated_dataset", "isolated_dataset"))
+```
 
+---
 
+`cell_count_compilation()` Compiles cell counts from multiple brains.
+
+---
+
+`get_groups()` Compiles group data from individual brains.
+
+---
+
+`voxelize()` Generates voxel-based heatmaps from multiple brains.
+
+---
+
+`voxel_stats()` Runs statistical tests on voxel-based heatmaps.
 
