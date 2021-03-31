@@ -534,6 +534,8 @@ SMART::get_sunburst(dataset)
 <b>Sunburst plot</b>
 </p>
 
+Click [here](https://smartrpackage.shinyapps.io/smart_sample_dataset/) for an interactive sunburst plot.
+
 ### Note: By setting the `rois` argument, the sunburst will display only ROI data. If the `parent` argument is set to `FALSE`, the base layer in sunburst will be the first ROI.
 
 `glassbrain2()` **(O)** A modified version of `wholebrain::glassbrain()`. New options include:
@@ -549,16 +551,32 @@ glassbrain <- glassbrain2(dataset, high.res = "OFF", jitter = FALSE)
 glassbrain
 ```
 
-<p align="center">
-<img src="schematics/glassbrain.html" width="500" />
-<br>
-<b>Sunburst plot</b>
-</p>
+Click [here](https://smartrpackage.shinyapps.io/smart_sample_dataset/) for an interactive glasssbrain.
 
-Drag mouse to rotate model. Use mouse wheel or middle button to zoom it.
+`get_table()` **(O)** Generates a dataframe showing region acronyms, their full name, hierachical paths, total cell counts, left and right counts, and cell count percentages.
+
+```diff
+# Example usage:
+# Get data table displaying cell counts from Ammon's horn
+table <- get_table(dataset, rois = "CA", base = "HIP")
+View(table)
+
+# Setting the base argument to "HIP" changes the count percentage to be out of the entire hippocampal formation
+# Change base to "CA" bases the percentage counts off cell counts in Ammon's horn exclusively
+# Change base and rois to "grey" to get all cell counts of grey matter in the brain
+```
+
+The table below is representative of the dataframe displayed:
+
+<p align="center">
+<img src="schematics/table.PNG" width="800" />
+<br>
+<b>Data table</b>
+</p>
 
 ## Part 6. Aggregating data from multiple analyses
 
+The tables and plots generated in Part 5 are designed for use with one brain. The following functions allow the user to aggregate data from multiple brains.
 
 
   - `concatenate()` Combines datasets from multiple brains.
