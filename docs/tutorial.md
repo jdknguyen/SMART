@@ -245,4 +245,22 @@ The choice game will cycle through the internal reference atlas plates (represen
 <b>Internal reference atlas plates</b>
 </p>
 
+The middlemost window (choice 2) is SMART’s best guess at the z image best aligned with the atlas coordinate based on the first and last aligned atlas plates (represented above by solid vertical lines).
+
+<p align="center">
+<img src="schematics/choice_game_1.PNG" width="450" />
+<br>
+<b>Display and prompt</b>
+</p>
+
+### Note: The default positions the windows pop up on screen can be set by the `xpos` argument.
+
+The current `choice_step` indicates how many z images the anteriormost (choice 1) or posteriormost (choice 3) images are from the middlemost image (choice 2). Entering 1, 2 or 3 into the console has three outcomes:
+
+1) **Choice 1** The anteriormost image becomes the new choice 2 on the next choice option.
+2) **Choice 2** On the next choice option, there is a smaller `choice_step` on the left and right images. Choosing this option will progressively “zoom in” on the `choice_step` options until the steps can’t get smaller. The choice game will then move on to the next atlas coordinate. By default, the smallest step is 10.
+3) **Choice 3** The posteriormost image becomes the new choice 2 on the next choice option.
+
+### Note: the `choice_step` progression is a user modifiable argument.
+
 
