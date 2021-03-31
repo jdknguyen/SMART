@@ -240,7 +240,7 @@ Enter 1, 2 or 3:
 The choice game will cycle through the internal reference atlas plates (represented below by dotted vertical lines). Three choice windows will popup for each reference AP coordinate, corresponding to choices 1,2 or 3, respectively. The user simply compares the corresponding atlas plate with the 3 choice windows and enters the best qualitative match.
 
 <p align="center">
-<img src="schematics/midpoint_schem.PNG" width="300" />
+<img src="schematics/Reference_atlas_schem.PNG" width="300" />
 <br>
 <b>Internal reference atlas plates</b>
 </p>
@@ -262,5 +262,168 @@ The current `choice_step` indicates how many z images the anteriormost (choice 1
 3) **Choice 3** The posteriormost image becomes the new choice 2 on the next choice option.
 
 ### Note: the `choice_step` progression is a user modifiable argument.
+
+<p align="center">
+<img src="schematics/midpoint_schem.PNG" width="300" />
+<br>
+<b>Midpoint quality check</b>
+</p>
+
+Once all the internal references atlas coordinates have been aligned, you can cycle through the midpoint AP coordinates of the aligned references as a quality check (represented above with black arrows). After comparing midpoints, any unsatisfactory midpoints become another internal reference point. The choice game automatically is replayed for those midpoints.
+
+Below shows my code to run the midpoint check:
+
+```diff
+# Run the midpoint check 
+> setup <- choice(setup, midpoint = TRUE, filetype = "tif")
+```
+
+The following image represents the console and popup window display during the midpoint check.
+
+<p align="center">
+<img src="schematics/choice_game_2.PNG" width="300" />
+<br>
+<b>Midpoint quality check display</b>
+</p>
+
+Below are my internal reference AP coordinates and z numbers after running `choice()` and checking midpoints with my analysis setup:
+
+```diff
+# Check internal reference AP numbers
+> setup$internal_ref_AP
+[1]  1.9060687  1.0969084 -0.4202672 -0.9259924 -1.9374427 -2.4431679 -2.9488931 -3.4546183 -3.9603435
+
+# Check matched image z numbers
+>  setup$internal_ref_z
+[1]  526  850 1492 1658 1950 2141 2402 2623 2723
+```
+
+If you are unsatisfied later with a few internal reference coordinate alignments, you can replay the choice game for just those points by setting them as a vector to the [touchup] argument. The code below replays the choice game for only coordinates 1.91 and -0.42 (double digit entries are fine):
+
+```diff
+# redo internal AP points 1.91 & -0.42
+> setup <- choice(setup, touchup = c(1.91, -0.42 ))
+```
+
+`brainmorph()` **(W)** Generate a brain morph plot showing areas of relative expansion or compression along the AP axis compared to the Allen Mouse Brain Atlas AP coodinates (normalized to 1). The reference atlas points used to generate the morph plot are plotted in red. Setting `saveplot = TRUE` will save the brain morph into the data folder designated by `setup$savepaths$out_RC_brain_morph`.
+
+```diff
+# Generate brainmorph. 
+brainmorph(setup, saveplot = FALSE)
+```
+
+<p align="center">
+<img src="schematics/brainmorph.PNG" width="300" />
+<br>
+<b>Brainmorph plot</b>
+</p>
+
+**Step 5.**
+
+`interpolate()` **W** This function interpolates all corresponding z and AP values for atlas plates that are not reference plates.
+
+```diff
+# Interpolate all remaining atlas plates and their z number
+setup <- interpolate(setup)
+```
+
+Now checking the setup list will show all matched internal AP plates and z numbers:
+
+```diff
+> setup$regi_AP
+ [1]  2.81637405  2.71522901  2.61408397  2.51293893  2.41179389  2.31064885  2.20950382  2.10835878  2.00721374
+[10]  1.90606870  1.80492366  1.70377863  1.60263359  1.50148855  1.40034351  1.29919847  1.19805344  1.09690840
+[19]  0.99576336  0.89461832  0.79347328  0.69232824  0.59118321  0.49003817  0.38889313  0.28774809  0.18660305
+[28]  0.08545802 -0.01568702 -0.11683206 -0.21797710 -0.31912214 -0.42026718 -0.52141221 -0.62255725 -0.72370229
+[37] -0.82484733 -0.92599237 -1.02713740 -1.12828244 -1.22942748 -1.33057252 -1.43171756 -1.53286260 -1.63400763
+[46] -1.73515267 -1.83629771 -1.93744275 -2.03858779 -2.13973282 -2.24087786 -2.34202290 -2.44316794 -2.54431298
+[55] -2.64545802 -2.74660305 -2.84774809 -2.94889313 -3.05003817 -3.15118321 -3.25232824 -3.35347328 -3.45461832
+[64] -3.55576336 -3.65690840 -3.75805344 -3.85919847 -3.96034351 -4.06148855 -4.16263359 -4.26377863 -4.36492366
+[73] -4.46606870 -4.56721374 -4.66835878 -4.76950382
+
+
+> setup$regi_z
+ [1]  200  236  272  309  345  381  417  454  490  526  566  607  648  688  728  769  810  850  893  936  978 1021
+[23] 1064 1107 1150 1192 1235 1278 1321 1364 1406 1449 1492 1525 1558 1592 1625 1658 1687 1716 1746 1775 1804 1833
+[45] 1862 1892 1921 1950 1988 2026 2065 2103 2141 2193 2245 2298 2350 2402 2446 2490 2535 2579 2623 2643 2663 2683
+[67] 2703 2723 2748 2774 2799 2824 2849 2875 2900 2925
+```
+
+## Part 3: Registration
+
+This section automates looping through through and registering all atlas plates to images from the registration channel. It also allows for easy modification of registrations.
+
+`registration2()` **(O)** Provides a user friendly interface to alter registrations. It retains the same arguments from the registration() function in wholebrain. This function may be useful for those who already have their own established analysis pipelines. Check out the function help page for more details.
+
+<p align="center">
+<img src="schematics/registration_console.PNG" width="500" />
+<br>
+<b>Registration interface</b>
+</p>
+
+The schematic above illustrates the user-friendly console interface that allows for modification of the correspondence plates on a given atlas plate. The `regi_loop()` function integrates this user-friendly registration interface with the pipeline.
+
+**Step 6.**
+
+`regi_loop()` User friendly function to alter atlas to image registration. When run with defaults, this function will automatically create a list in the global environment called `regis`. It will loop through the atlas plates according to the user preferences. The user also has the option to save the global environment after every manual registration.
+
+```diff
+# Example run of automated registration loop
+
+# Create filter for registration
+filter <- structure(list(alim = c(50, 50),
+                           threshold.range = c(50000, 60000L),
+                           eccentricity = 999L,
+                           Max = 1000,
+                           Min = 150,
+                           brain.threshold = 270L,
+                           resize = 0.25,
+                           blur = 7L,
+                           downsample = 2))
+
+# Run the autoloop
+regi_loop(setup, autoloop = TRUE, filter = filter)
+```
+
+### Note: The function `filter_loop()` allows the user to modify the filter for registration or segmentation and loop through the references plates to check filter adjustments in images across the brain.
+
+There are four different loop options:
+
+1) `autoloop = TRUE` runs wholebrain’s first pass at registering all atlas plates. Registrations are stored in the Registrations_auto folder. This is useful to check the quality of registrations across all atlas plates using current filter settings.
+2) `reference = TRUE` loops through reference atlas plates only and displays the console interface.
+3) The `touchup` argument is designed to edit a subset of atlas plates that have been previously registered. This argument requires referencing atlas plate numbers, not AP coordinates. Plate numbers can be easily found in the file names of the images saved to the ‘Registrations_manual’ folder in the output folder.
+- `touchup = TRUE` runs a user friendly interface allowing user to enter which plates they want to fix.
+- `touchup =` Numeric vector of plate numbers (integers) the user wants to fix.
+4) Setting all the arguments above to `FALSE` will loop through all atlas plates and display the console interface.
+
+### Tip: Save the global environment after every 2-3 registrations. The save time lengthens significantly as more registrations are stored in the `regis` list.
+
+Once the `regi_loop()` function has been run for the first time, the `regis` argument must be set to the `regis` list automatically generated in the global environment.
+
+For example:
+
+```diff
+# Loop through and modify only reference atlas plates
+regi_loop(setup, regis = regis, filter = filter, reference = TRUE)
+```
+
+Below is an example of a registration before and after manual improvement:
+
+<p align="center">
+<img src="schematics/before_registration.PNG" width="400" />
+<br>
+<b>After auto-registration</b>
+</p>
+
+<p align="center">
+<img src="schematics/after_registration.PNG" width="400" />
+<br>
+<b>After registration correction</b>
+</p>
+
+## Part 4: Segmentation, duplicate cleanup, & forward warping
+
+This section loops through all the images of the segmentation channel and automates the forward looping process. At the end of this section, you will have a mapped dataset!
+
 
 
