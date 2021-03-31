@@ -501,6 +501,62 @@ Following Step 10, there are no more steps in the pipeline. The remaining functi
 
 # INSERT ISOLATED DATASET STUFF HERE
 
+
+`get_rois()` **(O)** Allows the user to enter a character vector of Allen Mouse Brain Atlas abbreviations of regions of interest (ROIs). A subset of the dataframe from the wholebrain dataset of just the ROIs (and their subregions) are returned.
+
+`get_rois()` is especially useful in plotting cell count tables of regions of interest:
+
+```diff
+# Get dataset of just rois
+rois <- get_rois(dataset, rois = c("ACB", "CEA", "BLA", "HIP"))
+
+# Plot region cell counts in a table
+quartz()
+wholebrain::dot.plot(rois)
+```
+
+<p align="center">
+<img src="schematics/region_plot.PNG" width="500" />
+<br>
+<b>Region plot</b>
+</p>
+
+`get_sunburst()` **(O)** Generate a sunburst plot using a forward warped dataset.
+
+```diff
+# Plot sunburst plot using the get_sunburst() function
+SMART::get_sunburst(dataset)
+```
+
+<p align="center">
+<img src="schematics/sunburst.PNG" width="500" />
+<br>
+<b>Sunburst plot</b>
+</p>
+
+### Note: By setting the `rois` argument, the sunburst will display only ROI data. If the `parent` argument is set to `FALSE`, the base layer in sunburst will be the first ROI.
+
+`glassbrain2()` **(O)** A modified version of `wholebrain::glassbrain()`. New options include:
+
+1) Gives the user an option to turn off the “jitter” in cell placement in original glassbrain function (the jitter gives a more space filled look).
+2) Does not show the glass brain display when `high.res` is set to “OFF” (otherwise set to TRUE or FALSE). Setting high.res to TRUE or FALSE will render a high or low resolution atlas boundary
+
+```diff
+# Generate rgl object and plot glassbrain without 3D atlas boundaries
+glassbrain <- glassbrain2(dataset, high.res = "OFF", jitter = FALSE) 
+
+# visualize glass brain 
+glassbrain
+```
+
+<p align="center">
+<img src="schematics/glassbrain.html" width="500" />
+<br>
+<b>Sunburst plot</b>
+</p>
+
+Drag mouse to rotate model. Use mouse wheel or middle button to zoom it.
+
 ## Part 6. Aggregating data from multiple analyses
 
 
