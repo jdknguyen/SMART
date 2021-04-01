@@ -199,7 +199,8 @@ regi_loop <- function(setup, filter = NULL, regis = NULL, plane = "coronal", clo
         image <- magick::image_annotate(image, paste0("Plate ", toString(platereturn(AP)),", AP ",
                                                       toString(round(AP, digits=2)), ", z ", toString(imnum)),
                                         gravity = gravity, size= font_size , color = font_col, location = font_location)
-        quartz(canvas="black", title= paste("z-slice ", toString(imnum)))
+        quartz() # replaces line below to fix quartz error
+        # quartz(canvas="black", title= paste("z-slice ", toString(imnum)))
         popup_cur <- dev.cur()
         plot(image)
 
